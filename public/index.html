@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Saladin — Designer</title>
+  <meta name="description" content="Freelance designer based somewhere making things look good.">
+
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #0d0d0d;
+      --text: #e8e8e8;
+      --muted: #666;
+      --accent: #e8e8e8;
+      --link-hover: #fff;
+      --border: #1e1e1e;
+    }
+
+    html {
+      font-size: 14px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    a {
+      color: var(--text);
+      text-decoration: none;
+      transition: color 0.15s ease;
+    }
+
+    a:hover {
+      color: var(--link-hover);
+    }
+
+    /* Layout */
+    .container {
+      max-width: 560px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Nav */
+    nav {
+      padding: 40px 0 0;
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .nav-name {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      color: var(--text);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    /* Hero */
+    .hero {
+      padding: 80px 0 60px;
+    }
+
+    .hero-intro {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .hero-title {
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--text);
+      line-height: 1.7;
+      max-width: 420px;
+    }
+
+    /* Section */
+    section {
+      padding: 40px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    /* Work list */
+    .work-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+
+    .work-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .work-item:last-child {
+      border-bottom: none;
+    }
+
+    .work-left {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+    }
+
+    .work-name {
+      font-size: 13px;
+      color: var(--text);
+    }
+
+    .work-name a {
+      color: var(--text);
+    }
+
+    .work-name a:hover {
+      color: var(--link-hover);
+    }
+
+    .work-type {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .work-year {
+      font-size: 12px;
+      color: var(--muted);
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* About */
+    .about-text {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 420px;
+    }
+
+    .about-text a {
+      color: var(--text);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .about-text a:hover {
+      color: var(--link-hover);
+      border-color: var(--muted);
+    }
+
+    /* Writing / links */
+    .link-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+
+    .link-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .link-item:last-child {
+      border-bottom: none;
+    }
+
+    .link-title {
+      font-size: 13px;
+      color: var(--text);
+    }
+
+    .link-meta {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    /* Footer */
+    footer {
+      padding: 40px 0 60px;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-contact {
+      display: flex;
+      gap: 16px;
+    }
+
+    .footer-contact a {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .footer-contact a:hover {
+      color: var(--text);
+    }
+
+    .footer-copy {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* Status dot */
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .status-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #4ade80;
+      animation: pulse 2.5s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    /* Responsive */
+    @media (max-width: 480px) {
+      .nav-inner {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        gap: 16px;
+        align-items: flex-start;
+      }
+
+      .hero {
+        padding: 56px 0 40px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <nav>
+      <div class="nav-inner">
+        <span class="nav-name">Hey, Saladin</span>
+        <ul class="nav-links">
+          <li><a href="mailto:hey@heysaladin.me">Email</a></li>
+          <li><a href="https://twitter.com/" target="_blank" rel="noopener">Twitter</a></li>
+          <li><a href="https://t.me/" target="_blank" rel="noopener">Telegram</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="hero">
+      <p class="hero-intro">
+        <span class="status">
+          <span class="status-dot"></span>
+          Available for work
+        </span>
+      </p>
+      <p class="hero-title">
+        Freelance designer based in [City]. I help startups and studios build products people actually enjoy using.
+      </p>
+    </div>
+
+    <section>
+      <p class="section-label">Work</p>
+      <ul class="work-list">
+        <li class="work-item">
+          <div class="work-left">
+            <span class="work-name"><a href="#">Project One</a></span>
+            <span class="work-type">Product Design</span>
+          </div>
+          <span class="work-year">2025</span>
+        </li>
+        <li class="work-item">
+          <div class="work-left">
+            <span class="work-name"><a href="#">Project Two</a></span>
+            <span class="work-type">Brand &amp; Web</span>
+          </div>
+          <span class="work-year">2025</span>
+        </li>
+        <li class="work-item">
+          <div class="work-left">
+            <span class="work-name"><a href="#">Project Three</a></span>
+            <span class="work-type">Mobile App</span>
+          </div>
+          <span class="work-year">2024</span>
+        </li>
+        <li class="work-item">
+          <div class="work-left">
+            <span class="work-name"><a href="#">Project Four</a></span>
+            <span class="work-type">Consulting</span>
+          </div>
+          <span class="work-year">2024</span>
+        </li>
+        <li class="work-item">
+          <div class="work-left">
+            <span class="work-name"><a href="#">Project Five</a></span>
+            <span class="work-type">Product Design</span>
+          </div>
+          <span class="work-year">2024</span>
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <p class="section-label">About</p>
+      <p class="about-text">
+        I'm a designer focused on product, brand, and interaction. Previously worked with <a href="#">Studio X</a> and <a href="#">Agency Y</a>. I care about details, systems, and shipping things that work.
+        <br><br>
+        Open to freelance projects and collaborations. Reach me at <a href="mailto:hey@heysaladin.me">hey@heysaladin.me</a> or on <a href="https://t.me/" target="_blank" rel="noopener">Telegram</a>.
+      </p>
+    </section>
+
+    <section>
+      <p class="section-label">Writing</p>
+      <ul class="link-list">
+        <li class="link-item">
+          <a class="link-title" href="#" target="_blank" rel="noopener">On building design systems for small teams</a>
+          <span class="link-meta">Twitter</span>
+        </li>
+        <li class="link-item">
+          <a class="link-title" href="#" target="_blank" rel="noopener">Why most landing pages fail</a>
+          <span class="link-meta">Twitter</span>
+        </li>
+        <li class="link-item">
+          <a class="link-title" href="#" target="_blank" rel="noopener">Notes on freelancing in 2025</a>
+          <span class="link-meta">Twitter</span>
+        </li>
+        <li class="link-item">
+          <a class="link-title" href="#" target="_blank" rel="noopener">How I structure client work</a>
+          <span class="link-meta">Twitter</span>
+        </li>
+      </ul>
+    </section>
+
+    <footer>
+      <div class="footer-inner">
+        <div class="footer-contact">
+          <a href="mailto:hey@heysaladin.me">hey@heysaladin.me</a>
+          <a href="https://t.me/" target="_blank" rel="noopener">Telegram</a>
+          <a href="https://twitter.com/" target="_blank" rel="noopener">Twitter</a>
+        </div>
+        <span class="footer-copy">© 2025</span>
+      </div>
+    </footer>
+
+  </div>
+</body>
+</html>
